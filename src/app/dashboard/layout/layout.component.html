@@ -1,0 +1,21 @@
+<header class="py-5">
+  <h1 class="color-mani">Dashboard</h1>
+  <nav>
+    <ul>
+      <li>
+        <a routerLink="/dashboard/home" routerLinkActive="active">Dashboard</a>
+      </li>
+      <li><a routerLink="/dashboard/admin" routerLinkActive="active">Admin Section</a></li>
+      <li><a routerLink="/dashboard/manager" routerLinkActive="active">Manager Section</a></li>
+    </ul>
+  </nav>
+  <button hlmBtn type="button" (click)="logout()" class="mx-2 w-30">
+    Logout
+  </button>
+</header>
+<main>
+  <router-outlet />
+</main>
+<footer>
+  <p>&copy; 2025 My Application</p>
+</footer>

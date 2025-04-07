@@ -1,0 +1,79 @@
+<section hlmCard class="w-100 max-w-full">
+  <div hlmCardHeader>
+    <h3 hlmCardTitle>Register</h3>
+    <p hlmCardDescription>Create a new account</p>
+  </div>
+  <div hlmCardContent>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="space-y-6">
+      <hlm-form-field>
+        <input
+          class="w-full"
+          formControlName="email"
+          hlmInput
+          type="email"
+          placeholder="Email"
+        />
+        <hlm-error>{{ getErrorText(form.controls.email) }}</hlm-error>
+      </hlm-form-field>
+      <hlm-form-field>
+        <input
+          class="w-full"
+          formControlName="password"
+          hlmInput
+          type="password"
+          placeholder="Password"
+        />
+        <hlm-error>{{ getErrorText(form.controls.password) }}</hlm-error>
+      </hlm-form-field>
+      <hlm-form-field>
+        <input
+          class="w-full"
+          formControlName="name"
+          hlmInput
+          type="text"
+          placeholder="Name"
+        />
+        <hlm-error>{{ getErrorText(form.controls.name) }}</hlm-error>
+      </hlm-form-field>
+      <hlm-form-field>
+        <brn-select formControlName="roles" class="w-full" placeholder="Select an option" [multiple]="true">
+          <hlm-select-trigger class="w-full">
+            <hlm-select-value class="capitalize" />
+          </hlm-select-trigger>
+          <hlm-select-content class="w-full">
+            @for (role of userRoles; track role) {
+              <hlm-option [value]="role" class="capitalize">{{role}}</hlm-option>
+            }
+          </hlm-select-content>
+        </brn-select>
+        <hlm-error>{{ getErrorText(form.controls.password) }}</hlm-error>
+      </hlm-form-field>
+
+      <div hlmCardFooter class="block">
+        <div class="flex justify-center">
+          <button
+            hlmBtn
+            type="button"
+            (click)="onReset()"
+            variant="outline"
+            class="mx-2 w-30"
+            [disabled]="loading"
+          >
+            Reset
+          </button>
+          <button hlmBtn type="submit" class="mx-2 w-30" [disabled]="loading">
+            @if (loading) {
+            <hlm-spinner size="sm" />
+            } @else {Register}
+          </button>
+        </div>
+        <p class="mt-4 text-center">
+          Already have an account?
+          <a routerLink="/auth" class="text-blue-500 hover:text-blue-700"
+            >Login</a
+          >
+        </p>
+      </div>
+    </form>
+  </div>
+</section>
